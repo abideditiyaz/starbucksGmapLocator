@@ -1,0 +1,235 @@
+.container-outside{
+    position: absolute;
+    top: 60px;
+    left: 45px;
+    z-index: 2;
+    padding: 10px;
+    background-color: black;
+    width: 25%;
+    height: 85vh;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: .5s;
+    /*opacity: .5;*/
+}
+
+.camera {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.camera-inside {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #585454;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.camera-inside:hover {
+    cursor: pointer;
+}
+
+.container-popup{
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 20px;
+    background-color: white;
+    box-shadow: 5px 5px 8px rgba(0,0,0,.15);
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.container-notif{
+    display: grid;
+    grid-template-columns: repeat(2, 72%);
+    position: relative;
+    top: 7px;
+}
+
+.container-notif span {
+    margin-right: 5px;
+}
+
+.menu-phone {
+    position: absolute;
+    left: 11px;
+    bottom: 10px;
+    right: 11px;
+    color: #777474;
+    height: 6vh;
+    background-color: rgb(209, 216, 218);
+    border-radius: 0 0 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-evenly;
+    align-items: center;
+    opacity: .4;
+    transition: .5s;
+}
+
+.menu-phone i:nth-child(3){
+    font-size: 28px !important;
+    transform: rotate(-90deg);
+}
+
+.fa .fas {
+    font-size: 23px;
+}
+
+.menu-phone:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#map{
+    height: 100vh;
+}
+
+.title{
+    font-size: 55px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    height: 100px;
+    margin-top: -3px;
+    border-top: 1px solid #bfbdbd
+}
+
+.title img {
+    width: 100%
+}
+
+.search-container{
+    width: 100%;
+    height: 45px;
+    background-color: rgb(181, 189, 191);
+    border-radius: 20px;
+}
+
+.search{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.search input{
+    width: 95%;
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    color: white
+}
+
+.search input:focus{
+    outline: none;
+    font-size: 18px;
+}
+
+.search i{
+    font-size: 22px;
+    color: white;
+}
+
+.stores-list-container{
+    width: 88%;
+    height: 43vh;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    overflow-y: overlay;
+    box-shadow: 2px 2px 8px rgba(0,0,0,.12);
+}
+
+.stores-list{
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 85% auto);
+    align-items: center;
+    text-align: center;
+    transition: .3s;
+}
+
+.address {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.phone-number{
+    font-weight: lighter;
+    font-size: smaller;
+}
+
+.wrapper-number {
+    width: 30px;
+    height: 30px;background-color: #717070;
+    border-radius: 50%;
+    color: #d0d0d0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.wrapper-number p {
+    margin: auto;
+    font-size: 13px;
+}
+
+.stores-list:hover {
+    padding: 5px;
+    background-color: rgba(212, 212, 212,.88);
+    cursor: pointer;
+}
+
+.container-outside:hover {
+    opacity: 1;
+}
+
+.stores-list-marker {
+    min-width: 300px;
+}
+
+.address-marker {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #d2cfa5;
+}
+
+.address-marker p:nth-child(2){
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: lightgreen;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.gmaps-address {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.gmaps-address {
+    font-style: 18px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Googlemap locator</title>
+    <link href="fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+<body>
+    <div class="container-outside">
+        <div class="camera">
+            <div class="camera-inside"></div>
+        </div>
+    <div class="container-popup">
+        <div class="container-notif">
+            <div class="left">
+            <span>19:04</span>
+                <i class="fas fa-wifi"></i>
+                <i class="fab fa-swift"></i>
+                <i class="fab fa-wikipedia-w"></i>
+                <i class="fab fa-amazon"></i>
+            </div>
+            <div class="right">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-signal"></i>
+                <i class="far fa-clock"></i>
+                <i class="fas fa-battery-three-quarters"></i>
+            </div>
+        </div>
+        <div class="menu-phone">
+            <i class="fas fa-bars"></i>
+            <!-- <i class="fas fa-arrow-alt-circle-left"></i> in case i needed -->
+            <i class="fas fa-home"></i>
+            <i class="fas fa-sort-up"></i>
+        </div>
+        <!-- Title -->
+        <div class="title">
+            <img src="img/header.png">
+        </div>
+        <!-- Input field -->
+        <div class="search-container">
+            <div class="search">
+                <input type="text" placeholder="Enter Zip" id="searchElement">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <!-- list stores -->
+        <div class="stores-list-container" id="put">
+            
+        </div>
+    </div>
+    </div>
+    <div id="map"></div>
+    
+    <script src="js/data/store-data.js"></script>
+    <script src="js/data/proses.js"></script>
+    <script src="js/view/main.js"></script>
+    <script src="app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCblpgpbxgpP2q2jRQ0uqufMVCewr5E0c&callback=initMap"
+    async defer></script>
+    <script>
+        window.addEventListener('load', _ => {
+            alert(`Its work perfectly but since i didn't have credit card \nto pay google bill my API keys determinated :(`)
+        })
+    </script>
+</body>
+</html>

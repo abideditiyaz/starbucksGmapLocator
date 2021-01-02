@@ -1,0 +1,15 @@
+@import "style.css";
+@import "list.css";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: .5s;
+}
+
+.dark-mode{
+    background-color: black;
+}
