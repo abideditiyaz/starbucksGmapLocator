@@ -98,11 +98,6 @@
 }
 
 .title{
-    font-size: 55px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #fff;
-    height: 100px;
     margin-top: -3px;
     border-top: 1px solid #bfbdbd
 }
