@@ -10,34 +10,8 @@
     border-radius: 20px;
     overflow: hidden;
     transition: .5s;
-    /*opacity: .5;*/
 }
 
-.camera {
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    border-radius: 50%;
-    position: absolute;
-    top: -11px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.camera-inside {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background-color: #585454;
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.camera-inside:hover {
-    cursor: pointer;
-}
 
 .container-popup{
     display: grid;

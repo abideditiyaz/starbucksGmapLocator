@@ -74,10 +74,8 @@ let map;
 
 const main = _ =>{
 	const searchElement = document.querySelector('#searchElement');
-	const buttonEl = document.querySelector('.search i');
+	const buttonEl = document.querySelector('#searchThis');
 	const storeList = document.querySelector('#put');
-	const mode = document.querySelector('.camera-inside');
-	const page = document.querySelector('.container-popup');
 
 	const displayThis = _ => {
 		let storesHTML = "";
@@ -87,24 +85,19 @@ const main = _ =>{
 			const {streetAddressLine1, city, countrySubdivisionCode} = address;
 
 			const storeElement = document.createElement('div');
-			storeElement.setAttribute('class', 'stores-list');
+			storeElement.setAttribute('class', 'h-28');
 
 			storeElement.innerHTML = `
-				<div class="wrapper-sign">
+				<div class="flex flex-col justify-evenly h-full p-2">
                     <div class="address">
                         <p>${streetAddressLine1}</p>
                         <p>${city}, ${countrySubdivisionCode}</p>
                     </div>
                     <div class="phone-number"><p>${phoneNumber}</p></div>
                     <hr>
-                </div>
-                <div class="wrapper-number"><p>${index+1}</p></div>`;
+                </div>`;
             storeList.appendChild(storeElement);
 
-		})
-
-		mode.addEventListener('click', function () {
-			document.body.classList.toggle('dark-mode');
 		})
 
 		const setOnClickListener = _ => {
@@ -137,22 +130,22 @@ const main = _ =>{
 			const {phoneNumber, addressLines, brandName, name, openStatusText} = store;
 
 			const storeElement = document.createElement('div');
-			storeElement.setAttribute('class', 'about-store');
+			storeElement.setAttribute('class', 'h-48');
 
 			storeElement.innerHTML = `
-				<div class="wrapper-list">
-                    <div class="brandName">
+				<div class="h-full flex flex-col justify-evenly p-4">
+                    <div class="flex flex-col text-xl font-semibold">
                     	<span>${brandName}</span>
                     	<span>${name}</span>
                     </div>
-                    <div class="inside-list">
-                    	<div class="list-address">
-	                    	<div class="circle2">
+                    <div class="h-full flex flex-col justify-evenly">
+                    	<div class="flex items-center w-full">
+	                    	<div class="mr-3">
 	                    		<i class="fas fa-location-arrow"></i>
 	                    	</div>
 	                    	<p>${addressLines}</p>
 	                    </div>
-                    	<span>${openStatusText}</span>
+                    	<span class="block w-full bg-green-800 rounded-xs text-white p-1 text-center">${openStatusText}</span>
                     </div>
                 </div>`;
             storeList.appendChild(storeElement);
@@ -166,3 +159,5 @@ const main = _ =>{
 
 	buttonEl.addEventListener('click', onButtonSearchClicked);
 }
+
+// evenet.key === "enter"
