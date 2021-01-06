@@ -1,76 +1,5 @@
-let map;
-	let infoWindow;
-	let markers = [];
-	function initMap() {
-	    let Ind = {
-	        lat: 34.063584,
-	        lng: -118.376354
-	    }
-	    map = new google.maps.Map(document.getElementById('map'), {
-	    center: Ind,
-	    zoom: 8
-	    });
-	    infoWindow = new google.maps.InfoWindow();
-
-	    showStoresMarker();
-
-	}
-
-	const showStoresMarker = _ => {
-		let bounds = new google.maps.LatLngBounds();
-		stores.forEach((store, index) => {
-			let latlng = new google.maps.LatLng(
-					store.coordinates.latitude,
-					store.coordinates.longitude);
-			let name = store.name;
-			let address = store.addressLines[0];
-			let phoneNumber = store.phoneNumber;
-			let info = store.openStatusText;
-			bounds.extend(latlng);
-			createMarker(latlng, name, address, phoneNumber, info);
-		})
-		map.fitBounds(bounds);
-	}
-
-	const createMarker = (latlng, name, address, phoneNumber, info) => {
-		let html = "<b>" + name + "<b> <br/>" + address;
-		let html2 = `
-					<div class="stores-list-marker">
-						<div class="wrapper-sign-marker">
-		                    <div class="address-marker">
-		                        <p>${name}</p>
-		                        <p>${info}</p>
-		                    </div>
-		                    <div class="gmaps-address">
-		                    	<div class="circle">
-		                    		<i class="fas fa-location-arrow"></i>
-		                    	</div>
-		                    	<p>${address}</p>
-		                    </div>
-		                    <div class="gmaps-address">
-		                    	<div class="circle">
-		                    		<i class="fas fa-phone-alt"></i>
-		                    	</div>
-		                    	<p>${phoneNumber}</p>
-		                    </div>
-		                </div>
-	                </div>`
-		let marker = new google.maps.Marker({
-			map: map,
-			position: latlng
-		});
-		google.maps.event.addListener(marker, 'mouseover', function(){
-			infoWindow.setContent(html);
-			infoWindow.open(map, marker);
-		});
-
-		google.maps.event.addListener(marker, 'click', function(){
-			infoWindow.setContent(html2);
-			infoWindow.open(map, marker);
-		})
-		
-		markers.push(marker);
-	}
+// import stores from "./../data/store-data.js";
+import DataProcess from "./../data/proses.js";
 
 const main = _ =>{
 	const searchElement = document.querySelector('#searchElement');
@@ -147,7 +76,8 @@ const main = _ =>{
 	                    </div>
                     	<span class="block w-full bg-green-800 rounded-xs text-white p-1 text-center">${openStatusText}</span>
                     </div>
-                </div>`;
+                </div>
+                <hr>`;
             storeList.appendChild(storeElement);
 		})
 	};
@@ -159,5 +89,7 @@ const main = _ =>{
 
 	buttonEl.addEventListener('click', onButtonSearchClicked);
 }
+
+export default main;
 
 // evenet.key === "enter"

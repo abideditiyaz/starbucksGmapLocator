@@ -5,36 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Starbucks locator</title>
+    <link rel="icon" href="./img/log.ico" type="image/x-icon">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/27e59cf5d8.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <div class="absolute top-0 w-4/12 h-screen flex flex-col justify-evenly bg-white shadow-md z-50 p-10">
+    <div class="absolute top-0 w-4/12 h-screen flex flex-col justify-evenly bg-white shadow-lg z-50 p-10">
 
         <!-- Title -->
         <div class="w-3/4">
             <img src="img/header.png">
         </div>
         <!-- Input field -->
-        <div class="w-full rounded-md shadow-md h-10">
+        <div class="w-full rounded-md shadow-md h-10 focus:ring-2 focus:ring-green-400">
             <div class="h-full flex items-center py-0 px-3.5">
-                <input type="text" placeholder="Write Something" id="searchElement" class="text-green-800 w-11/12 px-9 bg-transparent border-none ">
-                <i class="fas fa-search" id="searchThis" class="text-xl"></i>
+                <input type="text" placeholder="Write Something" id="searchElement" class="text-green-800 w-11/12 px-9 bg-transparent border-none">
+                <i class="fas fa-search text-xl" id="searchThis"></i>
             </div>
         </div>
         <!-- list stores -->
-        <div class="h-3/4 overflow-y-scroll" id="put">
+        <div class="h-4/6 overflow-y-scroll" id="put">
             
         </div>
     </div>
 
     <div id="map" class="h-screen"></div>
     
-    <script src="js/data/store-data.js"></script>
-    <script src="js/data/proses.js"></script>
-    <script src="js/view/main.js"></script>
-    <script src="app.js"></script>
+    <script src="./js/data/store-data.js"></script>
+    <script>
+        let map;
+        let infoWindow;
+        let markers = [];
+        function initMap() {
+            let Ind = {
+                lat: 34.063584,
+                lng: -118.376354
+            }
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: Ind,
+            zoom: 8
+            });
+            infoWindow = new google.maps.InfoWindow();
+
+            showStoresMarker();
+
+        }
+
+        const showStoresMarker = _ => {
+            let bounds = new google.maps.LatLngBounds();
+            stores.forEach((store, index) => {
+                let latlng = new google.maps.LatLng(
+                        store.coordinates.latitude,
+                        store.coordinates.longitude);
+                let name = store.name;
+                let address = store.addressLines[0];
+                let phoneNumber = store.phoneNumber;
+                let info = store.openStatusText;
+                bounds.extend(latlng);
+                createMarker(latlng, name, address, phoneNumber, info);
+            })
+            map.fitBounds(bounds);
+        }
+
+        const createMarker = (latlng, name, address, phoneNumber, info) => {
+            let html = "<b>" + name + "<b> <br/>" + address;
+            let html2 = `
+                        <div class="stores-list-marker">
+                            <div class="wrapper-sign-marker">
+                                <div class="address-marker">
+                                    <p>${name}</p>
+                                    <p>${info}</p>
+                                </div>
+                                <div class="gmaps-address">
+                                    <div class="circle">
+                                        <i class="fas fa-location-arrow"></i>
+                                    </div>
+                                    <p>${address}</p>
+                                </div>
+                                <div class="gmaps-address">
+                                    <div class="circle">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <p>${phoneNumber}</p>
+                                </div>
+                            </div>
+                        </div>`
+            let marker = new google.maps.Marker({
+                map: map,
+                position: latlng
+            });
+            google.maps.event.addListener(marker, 'mouseover', function(){
+                infoWindow.setContent(html);
+                infoWindow.open(map, marker);
+            });
+
+            google.maps.event.addListener(marker, 'click', function(){
+                infoWindow.setContent(html2);
+                infoWindow.open(map, marker);
+            })
+            
+            markers.push(marker);
+        }
+    </script>
+    <script type="module" src="app.js"></script>
     <!-- U have to put ur api here cuz mine is expired hehe -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCblpgpbxgpP2q2jRQ0uqufMVCewr5E0c&callback=initMap"
     async defer></script>

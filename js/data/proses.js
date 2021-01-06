@@ -1,3 +1,5 @@
+// import stores from "./store-data.js";
+
 function DataProcess(onSuccess, onFailed) {
 	this.onSuccess = onSuccess;
 	this.onFailed = onFailed;
@@ -18,3 +20,5 @@ DataProcess.prototype.searchStores = function(keyword) {
 		this.onFailed(`${keyword} doesn't match!!`);
 	}
 };
+
+export default DataProcess;
