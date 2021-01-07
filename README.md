@@ -1,4 +1,4 @@
-#Replace the API key with yours cus i think it will expired
+#Replace the API key with yours cuz i think mine's will expired
 -Have fun !!!
 
 ##Notes
